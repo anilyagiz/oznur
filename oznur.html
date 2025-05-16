@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oznur'a Özel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+            margin: 20px;
+            z-index: 10;
+            position: relative;
+        }
+        
+        h1 {
+            color: #ff69b4;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+        
+        p {
+            color: #ff69b4;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 480px) {
+            p {
+                font-size: 1em;
+            }
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #ff69b4, #ff1493);
+            color: white;
+            font-size: 1.2em;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+        }
+        
+        .btn:hover, .btn:active {
+            background: linear-gradient(to right, #ff1493, #c71585);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(255, 105, 180, 0.5);
+        }
+        
+        @media (max-width: 480px) {
+            .btn {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+        
+        .image-container {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .oznur-text {
+            position: fixed;
+            color: #ff69b4;
+            font-weight: bold;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 5;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 480px) {
+            .oznur-text {
+                font-size: 18px;
+            }
+        }
+        
+        /* Fireworks */
+        .pyro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .pyro > .before, .pyro > .after {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 #fff;
+            animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
+        }
+        
+        .pyro > .after {
+            animation-delay: 1.25s, 1.25s, 1.25s;
+            animation-duration: 1.25s, 1.25s, 6.25s;
+        }
+        
+        @keyframes bang {
+            to {
+                box-shadow: -70px -115.67px #00ff73, -28px -99.67px #ff009d, 58px -31.67px #ff7700, 13px -7.67px #ff00d0, -19px -71.67px #00ffd0, -2px -40.67px #00ffdd, -22px -58.67px #99ff00, -54px -77.67px #ff0044, 30px -121.67px #ff6600, -12px -91.67px #ff002f, 5px 0.33px #ff00e1, -40px -30.67px #ffe600, -56px -108.67px #ff00e6, -11px -51.67px #00ff73, -5px -31.67px #002bff, 52px 8.33px #0400ff, 87px -19.67px #00f2ff, 11px -28.67px #00ffb3, 29px -29.67px #0062ff, -48px 8.33px #0026ff, 54px -27.67px #00ff33, 88px -17.67px #0059ff, 88px 18.33px #002fff, -39px -103.67px #00ff9d, 97px -55.67px #00ff2b, 19px 5.33px #00ffee, -4px -37.67px #00eaff, -73px -27.67px #ff00c8, 7px -52.67px #5500ff, -56px -90.67px #a6ff00, 30px -81.67px #ff004c, 16px -8.67px #00c4ff, 38px -12.67px #0048ff, -3px -50.67px #00ffd5, -4px 19.33px #00ffbb, -18px -45.67px #ff5e00, -51px -80.67px #0091ff, 18px -30.67px #ff001e, -40px -69.67px #00ff3c, 4px 9.33px #3c00ff, -46px 3.33px #ff0037, -78px -15.67px #9dff00, 26px -76.67px #c400ff, 75px -46.67px #5eff00, 80px -27.67px #ff00bf, -13px -83.67px #a200ff, -53px 8.33px #00ffd0, 11px 19.33px #ff0040;
+            }
+        }
+        
+        @keyframes gravity {
+            to {
+                transform: translateY(200px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes position {
+            0%, 19.9% {
+                margin-top: 10%;
+                margin-left: 40%;
+            }
+            20%, 39.9% {
+                margin-top: 40%;
+                margin-left: 30%;
+            }
+            40%, 59.9% {
+                margin-top: 20%;
+                margin-left: 70%;
+            }
+            60%, 79.9% {
+                margin-top: 30%;
+                margin-left: 20%;
+            }
+            80%, 99.9% {
+                margin-top: 30%;
+                margin-left: 80%;
+            }
+        }
+        
+        /* Sparkles */
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .sparkle {
+            position: absolute;
+            background-image: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle-animation 1s ease forwards;
+        }
+        
+        @keyframes sparkle-animation {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        
+        /* Floating hearts */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.3);
+            font-size: 20px;
+            animation: float-up 15s linear infinite;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    <div class="pyro" id="fireworks" style="display: none;">
+        <div class="before"></div>
+        <div class="after"></div>
+    </div>
+    <div class="sparkles" id="sparkles"></div>
+    
+    <div class="container">
+        <h1>Oznur'a Özel Sürpriz</h1>
+        <p>Aşağıdaki butona tıklayarak sürprizi görebilirsin!</p>
+        <button class="btn" id="surpriseBtn">Sürprizi Göster</button>
+        
+        <div class="image-container" id="imageContainer">
+            <img src="resim2.png" alt="Oznur'a özel görsel">
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const surpriseBtn = document.getElementById('surpriseBtn');
+            const imageContainer = document.getElementById('imageContainer');
+            const fireworks = document.getElementById('fireworks');
+            const sparkles = document.getElementById('sparkles');
+            const floatingHearts = document.getElementById('floatingHearts');
+            
+            // Create floating hearts in the background
+            createFloatingHearts();
+            
+            surpriseBtn.addEventListener('click', function() {
+                // Show the image
+                imageContainer.style.display = 'block';
+                
+                // Show fireworks
+                fireworks.style.display = 'block';
+                
+                // Add "Oznur" text around the page
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        createOznurText();
+                    }, i * 200);
+                }
+                
+                // Create sparkles
+                createSparkles();
+                
+                // Change button text
+                surpriseBtn.textContent = "Tekrar Göster";
+                
+                // Background color effect
+                document.body.style.backgroundColor = '#ffb6c1';
+                setTimeout(() => {
+                    document.body.style.backgroundColor = '#ffe6f2';
+                }, 500);
+                
+                // Hide fireworks after 5 seconds
+                setTimeout(() => {
+                    fireworks.style.display = 'none';
+                }, 5000);
+            });
+            
+            function createOznurText() {
+                const text = document.createElement('div');
+                text.className = 'oznur-text';
+                text.textContent = 'Oznur';
+                text.style.left = Math.random() * 80 + 10 + '%';
+                text.style.top = Math.random() * 80 + 10 + '%';
+                text.style.color = getRandomColor();
+                document.body.appendChild(text);
+                
+                // Fade in
+                setTimeout(() => {
+                    text.style.opacity = 1;
+                }, 100);
+                
+                // Fade out and remove after 3 seconds
+                setTimeout(() => {
+                    text.style.opacity = 0;
+                    setTimeout(() => {
+                        text.remove();
+                    }, 500);
+                }, 3000);
+            }
+            
+            function createSparkles() {
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle';
+                        sparkle.style.width = Math.random() * 10 + 5 + 'px';
+                        sparkle.style.height = sparkle.style.width;
+                        sparkle.style.left = Math.random() * 100 + '%';
+                        sparkle.style.top = Math.random() * 100 + '%';
+                        sparkles.appendChild(sparkle);
+                        
+                        // Remove sparkle after animation
+                        setTimeout(() => {
+                            sparkle.remove();
+                        }, 1000);
+                    }, i * 100);
+                }
+            }
+            
+            function createFloatingHearts() {
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.innerHTML = '❤';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = Math.random() * 100 + '%';
+                    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                    heart.style.animationDuration = Math.random() * 10 + 10 + 's';
+                    heart.style.animationDelay = Math.random() * 10 + 's';
+                    floatingHearts.appendChild(heart);
+                }
+            }
+            
+            function getRandomColor() {
+                const colors = [
+                    '#ff69b4', // Hot Pink
+                    '#ff1493', // Deep Pink
+                    '#c71585', // Medium Violet Red
+                    '#db7093', // Pale Violet Red
+                    '#ff00ff'  // Magenta
+                ];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+        });
+    </script>
+</body>
+</html> 
