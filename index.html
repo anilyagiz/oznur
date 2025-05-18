@@ -1,372 +1,329 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oznur'a Özel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --main-pink: #ff69b4;
+            --main-pink-dark: #ff1493;
+            --main-bg: #fff0f6;
+            --main-white: #fff;
+            --main-shadow: 0 4px 24px rgba(255, 105, 180, 0.15);
+        }
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffe6f2;
-            margin: 0;
-            padding: 0;
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            background: var(--main-bg);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
+            justify-content: flex-start;
+            padding: 0;
             overflow-x: hidden;
         }
-        
         .container {
-            width: 90%;
-            max-width: 600px;
-            padding: 25px;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
-            margin: 20px;
-            z-index: 10;
+            width: 100%;
+            max-width: 420px;
+            margin: 32px auto 0 auto;
+            background: var(--main-white);
+            border-radius: 24px;
+            box-shadow: var(--main-shadow);
+            padding: 32px 20px 24px 20px;
             position: relative;
-        }
-        
-        h1 {
-            color: #ff69b4;
-            font-size: 2.2em;
-            margin-bottom: 20px;
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8em;
-            }
-        }
-        
-        p {
-            color: #ff69b4;
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        
-        @media (max-width: 480px) {
-            p {
-                font-size: 1em;
-            }
-        }
-        
-        .btn {
-            background: linear-gradient(to right, #ff69b4, #ff1493);
-            color: white;
-            font-size: 1.2em;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
-        }
-        
-        .btn:hover, .btn:active {
-            background: linear-gradient(to right, #ff1493, #c71585);
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(255, 105, 180, 0.5);
-        }
-        
-        @media (max-width: 480px) {
-            .btn {
-                font-size: 1em;
-                padding: 10px 20px;
-            }
-        }
-        
-        .image-container {
-            margin-top: 30px;
-            display: none;
-        }
-        
-        .image-container img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .oznur-text {
-            position: fixed;
-            color: #ff69b4;
-            font-weight: bold;
-            font-size: 24px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 5;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-        }
-        
-        @media (max-width: 480px) {
-            .oznur-text {
-                font-size: 18px;
-            }
-        }
-        
-        /* Fireworks */
-        .pyro {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .pyro > .before, .pyro > .after {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            box-shadow: 0 0 #fff;
-            animation: 1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards;
-        }
-        
-        .pyro > .after {
-            animation-delay: 1.25s, 1.25s, 1.25s;
-            animation-duration: 1.25s, 1.25s, 6.25s;
-        }
-        
-        @keyframes bang {
-            to {
-                box-shadow: -70px -115.67px #00ff73, -28px -99.67px #ff009d, 58px -31.67px #ff7700, 13px -7.67px #ff00d0, -19px -71.67px #00ffd0, -2px -40.67px #00ffdd, -22px -58.67px #99ff00, -54px -77.67px #ff0044, 30px -121.67px #ff6600, -12px -91.67px #ff002f, 5px 0.33px #ff00e1, -40px -30.67px #ffe600, -56px -108.67px #ff00e6, -11px -51.67px #00ff73, -5px -31.67px #002bff, 52px 8.33px #0400ff, 87px -19.67px #00f2ff, 11px -28.67px #00ffb3, 29px -29.67px #0062ff, -48px 8.33px #0026ff, 54px -27.67px #00ff33, 88px -17.67px #0059ff, 88px 18.33px #002fff, -39px -103.67px #00ff9d, 97px -55.67px #00ff2b, 19px 5.33px #00ffee, -4px -37.67px #00eaff, -73px -27.67px #ff00c8, 7px -52.67px #5500ff, -56px -90.67px #a6ff00, 30px -81.67px #ff004c, 16px -8.67px #00c4ff, 38px -12.67px #0048ff, -3px -50.67px #00ffd5, -4px 19.33px #00ffbb, -18px -45.67px #ff5e00, -51px -80.67px #0091ff, 18px -30.67px #ff001e, -40px -69.67px #00ff3c, 4px 9.33px #3c00ff, -46px 3.33px #ff0037, -78px -15.67px #9dff00, 26px -76.67px #c400ff, 75px -46.67px #5eff00, 80px -27.67px #ff00bf, -13px -83.67px #a200ff, -53px 8.33px #00ffd0, 11px 19.33px #ff0040;
-            }
-        }
-        
-        @keyframes gravity {
-            to {
-                transform: translateY(200px);
-                opacity: 0;
-            }
-        }
-        
-        @keyframes position {
-            0%, 19.9% {
-                margin-top: 10%;
-                margin-left: 40%;
-            }
-            20%, 39.9% {
-                margin-top: 40%;
-                margin-left: 30%;
-            }
-            40%, 59.9% {
-                margin-top: 20%;
-                margin-left: 70%;
-            }
-            60%, 79.9% {
-                margin-top: 30%;
-                margin-left: 20%;
-            }
-            80%, 99.9% {
-                margin-top: 30%;
-                margin-left: 80%;
-            }
-        }
-        
-        /* Sparkles */
-        .sparkles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
             z-index: 2;
         }
-        
-        .sparkle {
-            position: absolute;
-            background-image: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0) 70%);
-            border-radius: 50%;
-            opacity: 0;
-            animation: sparkle-animation 1s ease forwards;
+        h1 {
+            font-family: 'Baloo 2', cursive;
+            color: var(--main-pink);
+            font-size: 2.3em;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
         }
-        
-        @keyframes sparkle-animation {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            20% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
+        p {
+            color: #c71585;
+            font-size: 1.1em;
+            margin-bottom: 24px;
         }
-        
-        /* Floating hearts */
-        .floating-hearts {
+        .btn {
+            background: linear-gradient(90deg, var(--main-pink), var(--main-pink-dark));
+            color: #fff;
+            font-size: 1.1em;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.18);
+        }
+        .btn:hover, .btn:active {
+            background: linear-gradient(90deg, var(--main-pink-dark), #c71585);
+            transform: scale(1.05);
+        }
+        .image-container {
+            margin-top: 24px;
+            display: none;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .oznur-text {
             position: fixed;
-            width: 100%;
-            height: 100%;
+            color: var(--main-pink);
+            font-weight: bold;
+            font-size: 22px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 5;
+            text-shadow: 0 0 8px #fff;
+            pointer-events: none;
+        }
+        /* Flower Animation */
+        .floating-flowers {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
             top: 0;
             left: 0;
             pointer-events: none;
             z-index: 0;
         }
-        
-        .floating-heart {
+        .floating-flower {
             position: absolute;
-            color: rgba(255, 105, 180, 0.3);
-            font-size: 20px;
-            animation: float-up 15s linear infinite;
+            font-size: 28px;
+            animation: float-flower 10s linear infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 2px 6px #ffb6d5);
         }
-        
-        @keyframes float-up {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0.3;
+        @keyframes float-flower {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+        }
+        /* Game Styles */
+        .game-container {
+            margin: 32px auto 0 auto;
+            width: 100%;
+            max-width: 420px;
+            background: var(--main-white);
+            padding: 20px 10px 30px 10px;
+            border-radius: 18px;
+            box-shadow: var(--main-shadow);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .game-area {
+            width: 100%;
+            max-width: 350px;
+            height: 350px;
+            margin: 0 auto 16px auto;
+            background: linear-gradient(180deg, #ffe6f2 60%, #fff 100%);
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(255, 105, 180, 0.10);
+            position: relative;
+            overflow: hidden;
+            touch-action: none;
+        }
+        .game-flower {
+            position: absolute;
+            font-size: 36px;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s;
+        }
+        .score-board {
+            font-size: 1.2em;
+            color: var(--main-pink-dark);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .game-btn {
+            margin-top: 10px;
+            background: linear-gradient(90deg, #ffb6d5, var(--main-pink));
+            color: #fff;
+            font-size: 1em;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .game-btn:hover {
+            background: linear-gradient(90deg, var(--main-pink), #ffb6d5);
+        }
+        @media (max-width: 600px) {
+            .container, .game-container {
+                max-width: 98vw;
+                padding: 18px 2vw 18px 2vw;
             }
-            100% {
-                transform: translateY(-10vh) rotate(360deg);
-                opacity: 0;
+            .game-area {
+                max-width: 95vw;
+                height: 60vw;
+                min-height: 220px;
             }
+        }
+        @media (max-width: 400px) {
+            h1 { font-size: 1.3em; }
+            .game-area { min-height: 160px; }
         }
     </style>
 </head>
 <body>
-    <div class="floating-hearts" id="floatingHearts"></div>
-    <div class="pyro" id="fireworks" style="display: none;">
-        <div class="before"></div>
-        <div class="after"></div>
-    </div>
-    <div class="sparkles" id="sparkles"></div>
-    
+    <div class="floating-flowers" id="floatingFlowers"></div>
     <div class="container">
         <h1>Oznur'a Özel Sürpriz</h1>
         <p>Aşağıdaki butona tıklayarak sürprizi görebilirsin!</p>
         <button class="btn" id="surpriseBtn">Sürprizi Göster</button>
-        
         <div class="image-container" id="imageContainer">
             <img src="resim2.png" alt="Oznur'a özel görsel">
         </div>
     </div>
-    
+    <div class="game-container" id="gameContainer">
+        <div class="score-board">Skor: <span id="score">0</span></div>
+        <div class="score-board">Süre: <span id="timeLeft">5</span> sn</div>
+        <div class="game-area" id="gameArea"></div>
+        <button class="game-btn" id="startGameBtn">Oyunu Başlat</button>
+    </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const surpriseBtn = document.getElementById('surpriseBtn');
-            const imageContainer = document.getElementById('imageContainer');
-            const fireworks = document.getElementById('fireworks');
-            const sparkles = document.getElementById('sparkles');
-            const floatingHearts = document.getElementById('floatingHearts');
-            
-            // Create floating hearts in the background
-            createFloatingHearts();
-            
-            surpriseBtn.addEventListener('click', function() {
-                // Show the image
-                imageContainer.style.display = 'block';
-                
-                // Show fireworks
-                fireworks.style.display = 'block';
-                
-                // Add "Oznur" text around the page
-                for (let i = 0; i < 15; i++) {
-                    setTimeout(() => {
-                        createOznurText();
-                    }, i * 200);
-                }
-                
-                // Create sparkles
-                createSparkles();
-                
-                // Change button text
-                surpriseBtn.textContent = "Tekrar Göster";
-                
-                // Background color effect
-                document.body.style.backgroundColor = '#ffb6c1';
+    // Responsive çiçek animasyonu
+    function createFloatingFlowers() {
+        const container = document.getElementById('floatingFlowers');
+        container.innerHTML = '';
+        for (let i = 0; i < 18; i++) {
+            const flower = document.createElement('div');
+            flower.className = 'floating-flower';
+            flower.textContent = ['🌸','🌼','🌺','💮','🌻'][Math.floor(Math.random()*5)];
+            flower.style.left = Math.random() * 95 + 'vw';
+            flower.style.top = (Math.random() * 80 + 10) + 'vh';
+            flower.style.fontSize = (Math.random()*18+22) + 'px';
+            flower.style.animationDuration = (Math.random()*6+7) + 's';
+            container.appendChild(flower);
+        }
+    }
+    createFloatingFlowers();
+    setInterval(createFloatingFlowers, 9000);
+
+    // Sürpriz butonu ve animasyonlar
+    document.addEventListener('DOMContentLoaded', function() {
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const imageContainer = document.getElementById('imageContainer');
+        surpriseBtn.addEventListener('click', function() {
+            imageContainer.style.display = 'block';
+            surpriseBtn.textContent = "Tekrar Göster";
+            document.body.style.backgroundColor = '#ffb6c1';
+            setTimeout(() => {
+                document.body.style.backgroundColor = '#fff0f6';
+            }, 500);
+            for (let i = 0; i < 12; i++) {
                 setTimeout(() => {
-                    document.body.style.backgroundColor = '#ffe6f2';
-                }, 500);
-                
-                // Hide fireworks after 5 seconds
-                setTimeout(() => {
-                    fireworks.style.display = 'none';
-                }, 5000);
-            });
-            
-            function createOznurText() {
-                const text = document.createElement('div');
-                text.className = 'oznur-text';
-                text.textContent = 'Oznur';
-                text.style.left = Math.random() * 80 + 10 + '%';
-                text.style.top = Math.random() * 80 + 10 + '%';
-                text.style.color = getRandomColor();
-                document.body.appendChild(text);
-                
-                // Fade in
-                setTimeout(() => {
-                    text.style.opacity = 1;
-                }, 100);
-                
-                // Fade out and remove after 3 seconds
-                setTimeout(() => {
-                    text.style.opacity = 0;
-                    setTimeout(() => {
-                        text.remove();
-                    }, 500);
-                }, 3000);
-            }
-            
-            function createSparkles() {
-                for (let i = 0; i < 50; i++) {
-                    setTimeout(() => {
-                        const sparkle = document.createElement('div');
-                        sparkle.className = 'sparkle';
-                        sparkle.style.width = Math.random() * 10 + 5 + 'px';
-                        sparkle.style.height = sparkle.style.width;
-                        sparkle.style.left = Math.random() * 100 + '%';
-                        sparkle.style.top = Math.random() * 100 + '%';
-                        sparkles.appendChild(sparkle);
-                        
-                        // Remove sparkle after animation
-                        setTimeout(() => {
-                            sparkle.remove();
-                        }, 1000);
-                    }, i * 100);
-                }
-            }
-            
-            function createFloatingHearts() {
-                for (let i = 0; i < 20; i++) {
-                    const heart = document.createElement('div');
-                    heart.className = 'floating-heart';
-                    heart.innerHTML = '❤';
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.top = Math.random() * 100 + '%';
-                    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-                    heart.style.animationDuration = Math.random() * 10 + 10 + 's';
-                    heart.style.animationDelay = Math.random() * 10 + 's';
-                    floatingHearts.appendChild(heart);
-                }
-            }
-            
-            function getRandomColor() {
-                const colors = [
-                    '#ff69b4', // Hot Pink
-                    '#ff1493', // Deep Pink
-                    '#c71585', // Medium Violet Red
-                    '#db7093', // Pale Violet Red
-                    '#ff00ff'  // Magenta
-                ];
-                return colors[Math.floor(Math.random() * colors.length)];
+                    createOznurText();
+                }, i * 180);
             }
         });
+        function createOznurText() {
+            const text = document.createElement('div');
+            text.className = 'oznur-text';
+            text.textContent = 'Oznur';
+            text.style.left = Math.random() * 80 + 10 + '%';
+            text.style.top = Math.random() * 80 + 10 + '%';
+            text.style.color = ['#ff69b4','#ff1493','#c71585','#db7093','#ff00ff'][Math.floor(Math.random()*5)];
+            document.body.appendChild(text);
+            setTimeout(() => { text.style.opacity = 1; }, 100);
+            setTimeout(() => {
+                text.style.opacity = 0;
+                setTimeout(() => { text.remove(); }, 500);
+            }, 2200);
+        }
+    });
+
+    // Eğlenceli Oyun: Çiçek Yakalama
+    let gameInterval, flowerTimeout, timerInterval;
+    let score = 0;
+    let gameActive = false;
+    let timeLeft = 5;
+    const gameArea = document.getElementById('gameArea');
+    const scoreDisplay = document.getElementById('score');
+    const startGameBtn = document.getElementById('startGameBtn');
+    const timeLeftDisplay = document.getElementById('timeLeft');
+    function startGame() {
+        score = 0;
+        timeLeft = 5;
+        scoreDisplay.textContent = score;
+        timeLeftDisplay.textContent = timeLeft;
+        gameActive = true;
+        startGameBtn.disabled = true;
+        gameArea.innerHTML = '';
+        spawnFlower();
+        gameInterval = setInterval(spawnFlower, 1200);
+        timerInterval = setInterval(decreaseTime, 1000);
+    }
+    function decreaseTime() {
+        if (!gameActive) return;
+        timeLeft--;
+        timeLeftDisplay.textContent = timeLeft;
+        if (timeLeft <= 0) {
+            endGame('Kaybettin ezik!');
+        }
+    }
+    function endGame(message) {
+        gameActive = false;
+        clearInterval(gameInterval);
+        clearInterval(timerInterval);
+        clearTimeout(flowerTimeout);
+        startGameBtn.disabled = false;
+        setTimeout(() => {
+            if (message) {
+                alert(message);
+            } else {
+                alert('Oyun bitti! Skorun: ' + score + ' 🌸');
+            }
+        }, 200);
+    }
+    function spawnFlower() {
+        if (!gameActive) return;
+        const flower = document.createElement('div');
+        flower.className = 'game-flower';
+        flower.textContent = ['🌸','🌼','🌺','💮','🌻'][Math.floor(Math.random()*5)];
+        const areaRect = gameArea.getBoundingClientRect();
+        const size = Math.random()*18+32;
+        flower.style.fontSize = size + 'px';
+        const maxLeft = gameArea.offsetWidth - size;
+        const maxTop = gameArea.offsetHeight - size;
+        flower.style.left = Math.random() * maxLeft + 'px';
+        flower.style.top = Math.random() * maxTop + 'px';
+        gameArea.appendChild(flower);
+        // Tıklama veya dokunma ile skor
+        flower.addEventListener('click', catchFlower);
+        flower.addEventListener('touchstart', catchFlower);
+        // Çiçek 1.2 saniye sonra kaybolur
+        flowerTimeout = setTimeout(() => {
+            if (gameArea.contains(flower)) flower.remove();
+        }, 1100);
+    }
+    function catchFlower(e) {
+        if (!gameActive) return;
+        score++;
+        scoreDisplay.textContent = score;
+        // Her tıkta süreye +2 saniye ekle
+        timeLeft += 2;
+        timeLeftDisplay.textContent = timeLeft;
+        e.target.remove();
+        if (score >= 5) {
+            endGame('Oha çok havalısın!');
+        }
+    }
+    startGameBtn.addEventListener('click', startGame);
     </script>
 </body>
 </html> 
